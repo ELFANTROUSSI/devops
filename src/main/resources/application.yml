@@ -6,6 +6,13 @@ doodle:
   organizermail: "olivier.barais@gmail.com"
   tmpfolder: "/tmp/excelFiles"
 quarkus:
+  vault:
+    url: http://localhost:8200
+    authentication:
+      userpass:
+        username: oussama
+        password: azerty123
+    secret-config-kv-path: doodle
   datasource:
     db-kind: mysql
     username: root

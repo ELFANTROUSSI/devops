@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
+import io.quarkus.vault.VaultKVSecretEngine;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,6 +51,15 @@ public class PollResourceEx {
 	@GetMapping("/padApiKey")
 	public String getTest() {
 	  return privateKey;
+	}
+
+	@Inject
+	VaultKVSecretEngine kvSecretEngine;
+
+
+	@GetMapping("/path/{vault-path}")
+	public String getSecrets(@PathVariable("vault-path") String vaultPath) {
+	  return kvSecretEngine.readSecret(vaultPath).toString();
 	}
 
 

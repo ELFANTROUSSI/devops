@@ -44,7 +44,13 @@ public class PollResourceEx {
 	String apikey = "";
 	EPLiteClient client;
 
+	@ConfigProperty(name = "padApiKey")
+	String privateKey;
 
+	@GetMapping("/padApiKey")
+	public String getTest() {
+	  return privateKey;
+	}
 
 
 	@GetMapping("/polls")
